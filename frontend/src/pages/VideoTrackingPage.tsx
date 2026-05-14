@@ -847,11 +847,7 @@ function VideoTrackingPage() {
 
         <div className="mt-8">
 
-          <PersistentIDGallery
-            identities={
-              identities
-            }
-          />
+          <PersistentIDGallery />
 
         </div>
 
