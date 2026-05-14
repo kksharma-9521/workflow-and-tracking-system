@@ -10,16 +10,6 @@ import TopSearchBar from "../components/navbar/TopSearchBar";
 
 import SystemStatusCard from "../components/sidebar/SystemStatusCard";
 
-import {
-  Menu,
-} from "lucide-react";
-
-import {
-  useState,
-} from "react";
-
-import MobileSidebar from "../components/sidebar/MobileSidebar";
-
 import RealtimeClock from "../components/common/RealtimeClock";
 
 import NotificationBell from "../components/common/NotificationBell";
@@ -83,43 +73,38 @@ const sidebarItems = [
 
 function DashboardLayout() {
 
-  const [
-    mobileOpen,
-    setMobileOpen,
-  ] = useState(false);
-
   return (
 
     <div
-    className="
+      className="
         flex
         min-h-screen
         flex-col
         bg-[#0B1120]
         text-white
         lg:flex-row
-    "
+      "
     >
 
       {/* Sidebar */}
 
-    <aside
+      <aside
         className="
-        hidden
-        lg:flex
-        lg:flex-col
-        lg:w-[260px]
-        lg:min-h-screen
-        border-r
-        border-[#1F2937]
-        bg-[#111827]
-        px-5
-        py-6
-        relative
-        z-40
-        shrink-0
+          hidden
+          lg:flex
+          lg:flex-col
+          lg:w-[260px]
+          lg:min-h-screen
+          border-r
+          border-[#1F2937]
+          bg-[#111827]
+          px-5
+          py-6
+          relative
+          z-40
+          shrink-0
         "
-    >
+      >
 
         {/* Logo */}
 
@@ -215,7 +200,7 @@ function DashboardLayout() {
 
         <div className="mt-10">
 
-        <SystemStatusCard />
+          <SystemStatusCard />
 
         </div>
 
@@ -226,12 +211,12 @@ function DashboardLayout() {
 
       <main
         className="
-            flex-1
-            relative
-            z-10
-            overflow-x-hidden
+          flex-1
+          relative
+          z-10
+          overflow-x-hidden
         "
-      >    
+      >
 
         {/* Navbar */}
 
@@ -279,13 +264,15 @@ function DashboardLayout() {
 
           <div
             className="
-                flex
-                items-center
-                gap-4
+              flex
+              items-center
+              gap-4
             "
-            >
-              <RealtimeClock />
-              <NotificationBell />
+          >
+
+            <RealtimeClock />
+
+            <NotificationBell />
 
             <div
               className="
@@ -308,7 +295,7 @@ function DashboardLayout() {
 
             <TopSearchBar />
 
-            </div>
+          </div>
 
         </header>
 
@@ -316,11 +303,11 @@ function DashboardLayout() {
         {/* Routed Pages */}
 
         <div
-            className="
-                relative
-                z-0
-                p-8
-            "
+          className="
+            relative
+            z-0
+            p-8
+          "
         >
 
           <Outlet />

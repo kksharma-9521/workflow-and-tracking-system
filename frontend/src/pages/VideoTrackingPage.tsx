@@ -217,7 +217,7 @@ function VideoTrackingPage() {
 
               const trackingFrames =
                 await getTrackingFrames(
-                  videoJob.id
+                  String(videoJob.id)
                 );
 
               setTrackingData(
@@ -226,7 +226,7 @@ function VideoTrackingPage() {
 
               const identityData =
                 await getPersistentIdentities(
-                  videoJob.id
+                  String(videoJob.id)
                 );
 
               setIdentities(
@@ -571,9 +571,7 @@ function VideoTrackingPage() {
             >
 
               <source
-
                 src={`http://localhost:8000/${videoJob.output_path}`}
-
                 type="video/mp4"
               />
 
@@ -604,15 +602,12 @@ function VideoTrackingPage() {
       )}
 
       <SystemMetricsChart
-
         processedFrames={
           analytics?.processed_frames ?? 0
         }
-
         detectedObjects={
           analytics?.detected_object_count ?? 0
         }
-
         skippedFrames={
           analytics?.skipped_frames ?? 0
         }
@@ -766,9 +761,7 @@ function VideoTrackingPage() {
                       >
 
                         <source
-
                           src={`http://localhost:8000/${job.output_path}`}
-
                           type="video/mp4"
                         />
 
@@ -819,11 +812,8 @@ function VideoTrackingPage() {
                             href={getDownloadUrl(
                               job.id
                             )}
-
                             target="_blank"
-
                             rel="noreferrer"
-
                             className="
                               text-sm
                               font-semibold

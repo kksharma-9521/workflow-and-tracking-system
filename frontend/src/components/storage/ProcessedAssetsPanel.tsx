@@ -1,6 +1,5 @@
 import {
   Download,
-  FileText,
   PlayCircle,
   Video,
 } from "lucide-react";
@@ -203,15 +202,6 @@ function ProcessedAssetsPanel({
                       "
                     >
                       Completed
-                    </span>
-
-                    <span
-                      className="
-                        text-xs
-                        text-gray-500
-                      "
-                    >
-                      ID #{job.id}
                     </span>
 
                   </div>
