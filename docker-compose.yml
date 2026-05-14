@@ -1,0 +1,108 @@
+version: "3.9"
+
+services:
+
+  # =========================
+  # FastAPI Application
+  # =========================
+
+  api:
+
+    build: .
+
+    container_name: workflow_api
+
+    command:
+      uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      - .:/app
+
+    depends_on:
+      - postgres
+      - redis
+
+    env_file:
+      - .env
+
+
+  # =========================
+  # Celery Worker
+  # =========================
+
+  celery_worker:
+
+    build: .
+
+    container_name: workflow_worker
+
+    command:
+      celery -A app.core.celery_app
+      worker
+      --pool=solo
+      --loglevel=info
+
+    volumes:
+      - .:/app
+
+    depends_on:
+      - redis
+      - postgres
+
+    env_file:
+      - .env
+
+
+  # =========================
+  # PostgreSQL
+  # =========================
+
+  postgres:
+
+    image: postgres:15
+
+    container_name: workflow_postgres
+
+    restart: always
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1722
+      POSTGRES_DB: doc_db
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+
+  # =========================
+  # Redis
+  # =========================
+
+  redis:
+
+    image: redis:7
+
+    container_name: workflow_redis
+
+    restart: always
+
+    ports:
+      - "6380:6379"
+
+
+# =========================
+# Volumes
+# =========================
+
+volumes:
+
+  postgres_data:
