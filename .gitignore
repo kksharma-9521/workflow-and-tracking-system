@@ -107,3 +107,5 @@ build/
 # =========================
 
 celerybeat-schedule
+
+*.pt
